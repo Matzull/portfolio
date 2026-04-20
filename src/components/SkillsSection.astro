@@ -1,0 +1,39 @@
+---
+interface SkillGroups {
+  languages: string[];
+  cloud: string[];
+  systems: string[];
+  soft: string[];
+}
+
+interface Props {
+  title: string;
+  skills: SkillGroups;
+}
+
+const { title, skills } = Astro.props;
+---
+
+<section class="panel" id="skills">
+  <div class="section-heading">
+    <h2>{title}</h2>
+  </div>
+  <div class="skill-grid">
+    <article class="card skill-card">
+      <h3>Languages</h3>
+      <p>{skills.languages.join(', ')}</p>
+    </article>
+    <article class="card skill-card">
+      <h3>Cloud + DevOps</h3>
+      <p>{skills.cloud.join(', ')}</p>
+    </article>
+    <article class="card skill-card">
+      <h3>Systems</h3>
+      <p>{skills.systems.join(', ')}</p>
+    </article>
+    <article class="card skill-card">
+      <h3>Soft Skills</h3>
+      <p>{skills.soft.join(', ')}</p>
+    </article>
+  </div>
+</section>

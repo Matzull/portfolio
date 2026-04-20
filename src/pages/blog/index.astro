@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPosts } from '../../lib/content';
+import { ui } from '../../i18n/ui';
+
+const locale = 'en' as const;
+const labels = ui[locale];
+const posts = await getPosts(locale);
+---
+
+<BaseLayout
+  title="Engineering Notes | Marcos Alonso Campillo"
+  description="Deep dives into systems, data, and GPU projects."
+  locale={locale}
+  languageSwitchLabel={labels.languageSwitch}
+  navBasePath="/"
+  canonicalPath="/blog/"
+  nav={{
+    projects: labels.navProjects,
+    experience: labels.navExperience,
+    skills: labels.navSkills,
+    contact: labels.navContact,
+    blog: labels.navBlog,
+  }}
+>
+  <section class="panel" id="top">
+    <div class="section-heading">
+      <h1>{labels.blogIndexTitle}</h1>
+      <p>{labels.blogIndexHint}</p>
+    </div>
+    <p><a href="/">{labels.blogBackHome}</a></p>
+  </section>
+
+  <section class="panel" id="projects">
+    <div class="card-grid">
+      {posts.map((post) => (
+        <article class="card">
+          <div class="card-topline">
+            <h3>{post.title}</h3>
+            <span class="chip">{post.readingTime}</span>
+          </div>
+          <p>{post.summary}</p>
+          <p><strong>{labels.blogPublished}:</strong> {post.publishedAt}</p>
+          <ul class="tag-list" aria-label="Post tags">
+            {post.tags.map((tag) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+          <p>
+            <a href={`/blog/${post.slug}`}>{labels.blogReadMore}</a>
+          </p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

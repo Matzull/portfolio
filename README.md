@@ -1,43 +1,66 @@
-# Astro Starter Kit: Minimal
+# Marcos Portfolio (Astro + Bun)
+
+Data-driven portfolio where content lives in markdown and updates automatically.
+
+## Stack
+
+- Astro
+- Bun
+- Astro Content Collections (`src/content/*`)
+- GitHub Pages workflow (`.github/workflows/deploy.yml`)
+
+## Local Development
 
 ```sh
-bun create astro@latest -- --template minimal
+bun install
+bun run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Useful commands:
 
-## 🚀 Project Structure
+- `bun run dev` starts local server on `http://localhost:4321`
+- `bun run build` builds static output into `dist/`
+- `bun run preview` previews built output
+- `bun run check` runs Astro checks
 
-Inside of your Astro project, you'll see the following folders and files:
+## Content Model (Web as Code)
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+### Add a new project in under 2 minutes
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+1. Copy `templates/project-template.md`
+2. Paste it into `src/content/projects/<your-slug>.md`
+3. Fill frontmatter (`title.en`, `title.es`, `summary.en`, `summary.es`, `stack`, `links`)
+4. Save and run `bun run dev`
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+No component changes needed. New projects are auto-rendered in EN and ES pages.
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Add new experience entries
 
-## 🧞 Commands
+1. Create `src/content/experience/<your-slug>.md`
+2. Follow field shape from existing files in `src/content/experience/`
+3. Provide bilingual highlights (`highlights.en[]` and `highlights.es[]`)
 
-All commands are run from the root of the project, from a terminal:
+## Routes
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+- `/` English (default)
+- `/es/` Spanish
 
-## 👀 Want to learn more?
+## Customize Profile Data
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Update `src/data/profile.ts`:
+
+- name, role, location, about text
+- skill groups
+- contact links
+
+## Deployment (GitHub Pages)
+
+Workflow file: `.github/workflows/deploy.yml`
+
+Steps to enable:
+
+1. Push repository to GitHub
+2. In repository settings, set Pages source to `GitHub Actions`
+3. Push to `main` to trigger deployment
+
+The Astro `base` path is configured automatically in CI using the repository name.

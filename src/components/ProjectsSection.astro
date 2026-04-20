@@ -1,0 +1,68 @@
+---
+interface ProjectItem {
+  slug: string;
+  title: string;
+  summary: string;
+  featured: boolean;
+  status: string;
+  publishedAt: string;
+  stack: string[];
+  links?: {
+    github?: string;
+    demo?: string;
+    article?: string;
+  };
+}
+
+interface Props {
+  title: string;
+  hint: string;
+  statusLabel: string;
+  stackLabel: string;
+  linksLabel: string;
+  projects: ProjectItem[];
+}
+
+const { title, hint, statusLabel, stackLabel, linksLabel, projects } = Astro.props;
+---
+
+<section class="panel" id="projects">
+  <div class="section-heading">
+    <h2>{title}</h2>
+    <p>{hint}</p>
+  </div>
+  <div class="card-grid">
+    {projects.map((project, index) => (
+      <article class="card" data-featured={project.featured}>
+        <div class="card-topline">
+          <h3>
+            <span class="index-tag">0{index + 1}</span> {project.title}
+          </h3>
+          <span class="chip">{project.publishedAt}</span>
+        </div>
+        <p>{project.summary}</p>
+        <p>
+          <strong>{statusLabel}:</strong> {project.status}
+        </p>
+        <div>
+          <p>
+            <strong>{stackLabel}:</strong>
+          </p>
+          <ul class="tag-list" aria-label="Project stack tags">
+            {project.stack.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+        {project.links && (
+          <p>
+            <strong>{linksLabel}:</strong>{' '}
+            {project.links.github && <a href={project.links.github}>GitHub</a>}
+            {project.links.demo && <><span> | </span><a href={project.links.demo}>Demo</a></>}
+            {project.links.article && <><span> | </span><a href={project.links.article}>Writeup</a></>}
+          </p>
+        )}
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  email: string;
+  github: string;
+  builtWith: string;
+}
+
+const { title, email, github, builtWith } = Astro.props;
+---
+
+<section class="panel" id="contact">
+  <div class="section-heading">
+    <h2>{title}</h2>
+  </div>
+  <div class="contact-grid">
+    <article class="card">
+      <h3>Email</h3>
+      <p>
+        <a href={`mailto:${email}`}>{email}</a>
+      </p>
+    </article>
+    <article class="card">
+      <h3>GitHub</h3>
+      <p>
+        <a href={github} target="_blank" rel="noreferrer">{github}</a>
+      </p>
+    </article>
+    <article class="card">
+      <h3>LinkedIn</h3>
+      <p>TODO: add your LinkedIn URL.</p>
+    </article>
+  </div>
+  <pre class="contact-command"><code>$ ping marcos --for opportunities --stack "rust python c++"</code></pre>
+  <p class="built-with">{builtWith}</p>
+</section>

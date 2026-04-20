@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ui } from '../../i18n/ui';
+
+const locale = 'en' as const;
+const labels = ui[locale];
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout
+  title={`${post.data.title.en} | Engineering Notes`}
+  description={post.data.summary.en}
+  locale={locale}
+  languageSwitchLabel={labels.languageSwitch}
+  navBasePath="/"
+  canonicalPath={`/blog/${post.slug}/`}
+  nav={{
+    projects: labels.navProjects,
+    experience: labels.navExperience,
+    skills: labels.navSkills,
+    contact: labels.navContact,
+    blog: labels.navBlog,
+  }}
+>
+  <article class="panel blog-article" id="top">
+    <p class="eyebrow">{labels.blogPublished}: {post.data.publishedAt}</p>
+    <h1>{post.data.title.en}</h1>
+    <p class="hero-about">{post.data.summary.en}</p>
+    <p>
+      <strong>{labels.blogReadingTime}:</strong> {post.data.readingTime}
+    </p>
+    <ul class="tag-list" aria-label="Post tags">
+      {post.data.tags.map((tag: string) => (
+        <li>{tag}</li>
+      ))}
+    </ul>
+    <div class="blog-content">
+      <Content />
+    </div>
+    <p><a href="/blog">{labels.blogBackHome}</a></p>
+  </article>
+</BaseLayout>

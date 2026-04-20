@@ -1,0 +1,50 @@
+---
+interface Props {
+  eyebrow: string;
+  name: string;
+  role: string;
+  location: string;
+  about: string;
+  ctaProjects: string;
+  ctaContact: string;
+  email: string;
+  github: string;
+}
+
+const { eyebrow, name, role, location, about, ctaProjects, ctaContact, email, github } = Astro.props;
+---
+
+<section class="panel panel-hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{name}</h1>
+      <p class="hero-role">{role}</p>
+      <p class="hero-location">{location}</p>
+      <p class="hero-about">{about}</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn">{ctaProjects}</a>
+        <a href="#contact" class="btn btn-ghost">{ctaContact}</a>
+      </div>
+    </div>
+
+    <aside class="terminal-card" aria-label="Quick profile terminal card">
+      <div class="terminal-top">
+        <span class="dot red"></span>
+        <span class="dot amber"></span>
+        <span class="dot green"></span>
+        <code>~/portfolio --live</code>
+      </div>
+      <div class="terminal-body">
+        <p><span class="prompt">$</span> whoami</p>
+        <p class="terminal-output">{name}</p>
+        <p><span class="prompt">$</span> role --current</p>
+        <p class="terminal-output">{role}</p>
+        <p><span class="prompt">$</span> contact --email</p>
+        <p class="terminal-output">{email}</p>
+        <p><span class="prompt">$</span> open --github</p>
+        <p class="terminal-output"><a href={github} target="_blank" rel="noreferrer">{github}</a></p>
+      </div>
+    </aside>
+  </div>
+</section>

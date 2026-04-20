@@ -3,10 +3,11 @@ interface Props {
   title: string;
   email: string;
   github: string;
+  linkedin: string;
   builtWith: string;
 }
 
-const { title, email, github, builtWith } = Astro.props;
+const { title, email, github, linkedin, builtWith } = Astro.props;
 ---
 
 <section class="panel" id="contact">
@@ -28,7 +29,7 @@ const { title, email, github, builtWith } = Astro.props;
     </article>
     <article class="card">
       <h3>LinkedIn</h3>
-      <p>TODO: add your LinkedIn URL.</p>
+      <a href={linkedin} target="_blank" rel="noreferrer">{linkedin}</a>
     </article>
   </div>
   <pre class="contact-command"><code>$ ping marcos --for opportunities --stack "rust python c++"</code></pre>

@@ -9,6 +9,7 @@ export const profile = {
   location: 'Madrid, Spain',
   email: 'm.alonso.bs@protonmail.com',
   github: 'https://github.com/matzull',
+  linkedin: 'https://www.linkedin.com/in/marcos-alonso-campillo/',
   about: {
     en: 'Software engineer focused on reliable systems, observability, and production ownership. I work across Rust, Python, C++, cloud-native tooling, and deployment pipelines.',
     es: 'Ingeniero de software enfocado en sistemas fiables, observabilidad y ownership en produccion. Trabajo con Rust, Python, C++, tooling cloud-native y pipelines de despliegue.',

@@ -63,4 +63,4 @@ Steps to enable:
 2. In repository settings, set Pages source to `GitHub Actions`
 3. Push to `main` to trigger deployment
 
-The Astro `base` path is configured automatically in CI using the repository name.
+The Astro `base` path is configured automatically in CI using the repository name

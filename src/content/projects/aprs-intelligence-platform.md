@@ -1,10 +1,10 @@
 ---
 title:
-  en: APRS Intelligence Platform on AWS Serverless
-  es: Plataforma de Inteligencia APRS en AWS Serverless
+  en: "APRSint: APRS Intelligence Platform"
+  es: "APRSint: Plataforma de Inteligencia APRS"
 summary:
-  en: Event-driven pipeline for APRS messages with SQL/NoSQL storage and fast iteration on actionable signal processing.
-  es: Pipeline event-driven para mensajes APRS con almacenamiento SQL/NoSQL e iteracion rapida para procesamiento util de senal.
+  en: Real-time APRS pipeline that converts raw telemetry into reliable, analytics-ready operational insight.
+  es: Pipeline APRS en tiempo real que convierte telemetria bruta en insight operativo fiable y listo para analitica.
 featured: true
 status: completed
 publishedAt: '2024-11-01'
@@ -16,6 +16,6 @@ stack:
   - Python
 links:
   github: https://github.com/matzull
-  article: https://matzull.github.io/blog/aprsint-aprs-intelligence-platform
+  article: https://matzull.github.io/portfolio/blog/aprsint-aprs-intelligence-platform
 ---
-Built as a practical cloud-native system to ingest, process, and analyze APRS traffic with maintainable services.
+Built an end-to-end telemetry product from ingestion to dashboard, optimized for reliability under noisy streams.

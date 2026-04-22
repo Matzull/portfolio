@@ -14,7 +14,6 @@ stack:
   - Distributed Systems
   - Fault Analysis
 links:
-  github: https://github.com/matzull
   article: https://matzull.github.io/portfolio/blog/dafs-distributed-filesystem
 ---
 Designed core distributed-systems primitives with reliability, traceability, and production-minded operability.

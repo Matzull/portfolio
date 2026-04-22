@@ -29,7 +29,11 @@ const {
   canonicalPath,
 } = Astro.props;
 const isEnglish = locale === 'en';
+const baseUrl = import.meta.env.BASE_URL;
 const canonical = canonicalPath ?? (isEnglish ? '/' : '/es/');
+const withBase = (path: string) => `${baseUrl}${path.replace(/^\/+/, '')}`;
+const navRoot = withBase(navBasePath || '/');
+const blogPath = locale === 'en' ? '/blog/' : '/es/blog/';
 ---
 
 <!doctype html>
@@ -38,13 +42,13 @@ const canonical = canonicalPath ?? (isEnglish ? '/' : '/es/');
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="/portfolio/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={new URL(canonical, Astro.site)} />
-    <link rel="alternate" hreflang="en" href={new URL('/', Astro.site)} />
-    <link rel="alternate" hreflang="es" href={new URL('/es/', Astro.site)} />
-    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+    <link rel="canonical" href={new URL(withBase(canonical), Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL(withBase('/'), Astro.site)} />
+    <link rel="alternate" hreflang="es" href={new URL(withBase('/es/'), Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(withBase('/'), Astro.site)} />
   </head>
   <body>
     <div class="ambient ambient-a" aria-hidden="true"></div>
@@ -52,13 +56,13 @@ const canonical = canonicalPath ?? (isEnglish ? '/' : '/es/');
     <div class="background-grid" aria-hidden="true"></div>
     <div class="noise" aria-hidden="true"></div>
     <header class="site-header">
-      <a href={`${navBasePath}#top`} class="brand">matzull.dev</a>
+      <a href={`${navRoot}#top`} class="brand">matzull.dev</a>
       <nav class="top-nav" aria-label="Section links">
-        <a href={`${navBasePath}#projects`}>{nav.projects}</a>
-        <a href={`${navBasePath}#experience`}>{nav.experience}</a>
-        <a href={`${navBasePath}#skills`}>{nav.skills}</a>
-        <a href={`${navBasePath}#contact`}>{nav.contact}</a>
-        {nav.blog && <a href={locale === 'en' ? '/blog' : '/es/blog'}>{nav.blog}</a>}
+        <a href={`${navRoot}#projects`}>{nav.projects}</a>
+        <a href={`${navRoot}#experience`}>{nav.experience}</a>
+        <a href={`${navRoot}#skills`}>{nav.skills}</a>
+        <a href={`${navRoot}#contact`}>{nav.contact}</a>
+        {nav.blog && <a href={withBase(blogPath)}>{nav.blog}</a>}
       </nav>
       <LanguageSwitch locale={locale} label={languageSwitchLabel} />
     </header>

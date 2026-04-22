@@ -7,7 +7,8 @@ interface Props {
 }
 
 const { locale, label } = Astro.props;
-const href = locale === 'en' ? '/es/' : '/';
+const baseUrl = import.meta.env.BASE_URL;
+const href = locale === 'en' ? `${baseUrl}es/` : baseUrl;
 ---
 
 <a class="lang-switch" href={href}>{label}</a>

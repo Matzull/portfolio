@@ -16,7 +16,8 @@ stack:
   - OCR
   - Python
 links:
-  github: https://github.com/matzull
+  github: https://github.com/matzull/FastFinance
   article: https://matzull.github.io/portfolio/blog/fastfinance-personal-finance-platform
+  demo: https://matzull.github.io/FastFinance
 ---
 Shipped end-to-end ownership across backend, automation, and mobile with a consistent product experience.

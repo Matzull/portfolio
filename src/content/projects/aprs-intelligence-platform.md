@@ -15,7 +15,7 @@ stack:
   - NoSQL
   - Python
 links:
-  github: https://github.com/matzull
+  github: https://github.com/Matzull/APRSint
   article: https://matzull.github.io/portfolio/blog/aprsint-aprs-intelligence-platform
 ---
 Built an end-to-end telemetry product from ingestion to dashboard, optimized for reliability under noisy streams.
